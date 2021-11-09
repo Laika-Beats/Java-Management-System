@@ -3,7 +3,7 @@
 A boilerplate Rest API  using Spring Boot, postgreSQL, Maven, and Hibernate.
 
  *********************
- Usage:
+ Testing end points in postman:
 
 ![](REST-API-Tests.gif)
 
