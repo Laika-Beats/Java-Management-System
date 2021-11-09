@@ -26,6 +26,9 @@ public class RestClient {
 	static RestTemplate restTemplate = new RestTemplate();
 	public static void main(String[] args) {
 		callGetAllEmployeesAPI();
+		callGetEmployeeByIdAPI();
+		callCreateEmployeeAPI();
+		callUpdateEmployeeAPI();
 		
 	}
 	
@@ -41,10 +44,31 @@ public class RestClient {
 	
 	private static void callGetEmployeeByIdAPI() {
 		Map<String, Integer> param = new HashMap<>();
-		param.put("id, 1");
+		param.put("id", 1);
 		
 		Employee employee = restTemplate.getForObject(GET_EMPLOYEE_BY_ID_API, Employee.class, param);
-		
+		System.out.println(employee.getFirstName());
+		System.out.println(employee.getLastName());
+		System.out.println(employee.getEmail());
 	}
-
+	
+	private static void callCreateEmployeeAPI() {
+		Employee employee = new Employee("Buddy", "Guy", "buddyguy@email.com");
+		ResponseEntity<Employee> employee2 = restTemplate.postForEntity(CREATE_EMPLOYEE_API, employee, Employee.class);
+		System.out.println(employee2.getBody());
+	}
+	
+	private static void callUpdateEmployeeAPI() {
+		Map<String, Integer> param = new HashMap<>();
+		param.put("id", 2);
+		Employee updateEmployee = new Employee("Jessica", "Jones", "jessicajones@gmail.com");
+		ResponseEntity<Employee> employee2 = restTemplate.postForEntity(UPDATE_EMPLOYEE_API, updateEmployee, Employee.class);
+		System.out.println(employee2);
+	}
+	
+	private static void callDeleteEmployeeAPI() {
+		Map<String, Integer> param = new HashMap<>();
+		param.put("id", 2);
+		restTemplate.delete(DELETE_EMPLOYEE_API, param);
+	}
 }
