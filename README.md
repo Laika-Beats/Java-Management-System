@@ -5,7 +5,7 @@ A boilerplate Rest API  using Spring Boot, postgreSQL, Maven, and Hibernate.
  *********************
  Usage:
 
-![](Spring Boot REST API Tests.gif)
+![](SpringBootRESTAPITests.gif)
 
 
  *********************
